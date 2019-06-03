@@ -1,0 +1,17 @@
+{% extends 'questions/base.html' %}
+{% load bootstrap4 %}
+{% block title %}
+	Ask
+{% endblock title %}
+
+
+{% block content %}
+	<div class="container">
+		<form action="/ask" method="post">
+			{% csrf_token %}
+			{% bootstrap_form form %}
+			<input type="submit" name="post" class="btn btn-outline-dark">
+		</form>
+
+	</div>
+{% endblock content %}

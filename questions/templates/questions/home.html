@@ -1,0 +1,29 @@
+{% extends 'questions/base.html' %}
+{% load static %}
+
+{% block title %} 
+Home 
+{% endblock title %}
+
+
+{% block content %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'questions/home.css' %}">
+	<div class="container">
+		{% for question in questions %}
+			{% if question.answered %}
+				<div class="card m-3 cardy" style="background: rgb(20,180,50);">
+			{% else %}
+				<div class="card m-3 cardy">
+			{% endif %}
+			  <div class="card-body">
+			    <h5 class="card-title">{{question.asked_by}}</h5>
+			    <h6 class="card-subtitle mb-2 text-muted">{{ question.date_created }}</h6>
+			    <p class="card-text">{{ question.question }}</p>
+			    <a href="{% url 'question' question.pk %}" class="btn btn-primary">See</a>
+			  </div>
+			</div>
+		{% endfor %}
+	</div>
+
+{% endblock content %}

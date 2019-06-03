@@ -1,0 +1,42 @@
+{% extends 'questions/base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block title %} Question {% endblock title %}
+
+{% block content %}
+	<link rel="stylesheet" type="text/css" href="{% static 'questions/question.css' %}">
+
+	<div class="container">
+		<h1 class="display-3">Question</h1>
+		<div class="card" id="qu">
+		  <div class="card-body">
+			{{ question }}
+		  </div>
+		</div>
+		<h1 class="display-4 text-secondary">Answers</h1>
+		{% for answer in answers %}
+			<div class="card m-2 highlight" onclick="like({{answer.pk}})">
+				<h5 class="card-title">{{ answer.answered_by }}</h5>
+				<h6 class="card-subtitle mb-2 text-muted">{{ answer.date_posted }}</h6>
+			  <div class="card-body">
+				{{answer}}
+			  </div>
+			  <div class="card-body text-muted">
+			  	Likes <div id="answer-{{answer.pk}}">{{ answer.likes }}</div>
+			  </div>
+			</div>
+		{% endfor %}
+
+		<form method="post" action="{% url 'question' question.pk %}" class="m-2">
+			{% csrf_token %}
+			{% bootstrap_form form %}
+			{% block buttons %}
+				<button class="btn btn-outline-primary">Answer</button>
+			{% endblock %}
+		</form>
+
+		<script type="text/javascript" src={% static "questions/question.js" %}></script>
+	</div>
+
+{% endblock %}

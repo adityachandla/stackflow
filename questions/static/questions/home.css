@@ -1,0 +1,7 @@
+.cardy{
+	transition: transform 2s ease;
+}
+
+.cardy:hover{
+	transform: scale(1.1);
+}
