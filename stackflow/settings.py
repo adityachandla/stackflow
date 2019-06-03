@@ -25,7 +25,7 @@ SECRET_KEY = '68x6gol7ji)vtv^su(a202@)8$5a)52#o^fqm-f0v9#he%z-%%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['radiant-stream-15720.herokuapp.com','localhost', '127.0.0.1']
 
 
 # Application definition
